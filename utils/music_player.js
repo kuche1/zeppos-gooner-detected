@@ -27,17 +27,13 @@ export class MusicPlayer {
       return;
     }
 
-    logger.debug("creating player");
-
     this.#player = create(id.PLAYER);
 
     // TODO: it is questionable that we make it play right away
     // or is it?
-    // TODO: this shit does not seem to work on the simulator
     this.#player.addEventListener(
       this.#player.event.PREPARE,
       (ok) => {
-        logger.debug("PREPARE: " + ok);
         if (ok) {
           this.#player.start();
         } else {
