@@ -1,5 +1,3 @@
-// TODO: make most `screen` stuff private
-
 import * as hmUI from "@zos/ui";
 import { px } from "@zos/utils";
 
