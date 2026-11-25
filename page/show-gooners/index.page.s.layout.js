@@ -8,7 +8,7 @@ export const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = getDeviceInfo();
 const STATUS_BAR_HEIGHT = px(80);
 // this is not documented, measured by hand on the "bip max"
 
-const TEXT = "GOONER DETECTED";
+const TEXT = "GOONER DETECTED\n犹太人 tracker 6000";
 const TEXT_SIZE = px(40);
 
 const { height: TEXT_HEIGHT } = hmUI.getTextLayout(TEXT, {
@@ -28,6 +28,7 @@ export const TEXT_STYLE = {
   align_v: hmUI.align.CENTER_V,
 };
 
+// TODO: this looks squashed now
 export const IMG_STYLE = {
   x: 0,
   y: STATUS_BAR_HEIGHT + TEXT_HEIGHT,
