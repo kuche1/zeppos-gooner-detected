@@ -8,10 +8,10 @@ export class AnimationRadar {
    */
   constructor(screen) {
     const width = screen.device_width;
-    const { y, h } = screen.consume_remaining_screen_space();
+    const { x, y, h } = screen.consume_remaining_screen_space();
 
     const r = Math.floor(Math.min(width, h) / 2) - px(20);
-    const cx = Math.floor(width / 2);
+    const cx = x + Math.floor(width / 2);
     const cy = y + Math.floor(h / 2);
 
     // rings

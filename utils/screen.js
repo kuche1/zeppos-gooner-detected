@@ -1,11 +1,14 @@
 import { getDeviceInfo } from "@zos/device";
 import { px } from "@zos/utils";
 import * as hmUI from "@zos/ui";
+import { setScrollMode, SCROLL_MODE_SWIPER_HORIZONTAL } from "@zos/page";
 
 export class Screen {
   device_width;
   #device_height;
+  #cursor_x;
   #cursor_y;
+  #horizontal_screens;
 
   /**
    * @param {boolean} top_bar_visible
@@ -15,7 +18,9 @@ export class Screen {
     this.device_width = width;
     this.#device_height = height;
 
-    this.#cursor_y = 0
+    this.#cursor_x = 0;
+
+    this.#cursor_y = 0;
 
     hmUI.setStatusBarVisible(top_bar_visible);
     if (top_bar_visible) {
@@ -23,7 +28,38 @@ export class Screen {
         // this value has been eyeballed for the `bip max`
         this.#cursor_y += px(80);
     }
+
+    this.#horizontal_screens = 1;
   }
+
+  /**
+   * @returns {{ x: number, y: number, h: number}}
+   **/
+  consume_remaining_screen_space() {
+    const x = this.#cursor_x;
+    const y = this.#cursor_y;
+    const h = this.#device_height - this.#cursor_y;
+    this.#cursor_y = this.#device_height;
+    return {x, y, h};
+  }
+
+  next_horizontal_screen() {
+    this.#cursor_x += this.device_width;
+    this.#cursor_y = 0;
+    this.#horizontal_screens += 1;
+  }
+
+  finish_screen_setup() {
+    setScrollMode({
+      mode: SCROLL_MODE_SWIPER_HORIZONTAL,
+      options: {
+        width: this.device_width,
+        count: this.#horizontal_screens,
+      },
+    });
+  }
+
+  ////////////////////////////////////////////////////////////// print
 
   /**
    * @param {string} text 
@@ -47,7 +83,7 @@ export class Screen {
       hmUI.widget.TEXT,
       {
         text: text,
-        x: 0,
+        x: this.#cursor_x,
         y: this.#cursor_y,
         w: width,
         h: height,
@@ -71,7 +107,7 @@ export class Screen {
     hmUI.createWidget(
       hmUI.widget.IMG,
       {
-        x: 0,
+        x: this.#cursor_x,
         y: y,
         w: this.device_width,
         h: h,
@@ -79,15 +115,5 @@ export class Screen {
         auto_scale: true, // resize the image so that it fits `w` and `h`
       },
     );
-  }
-
-  /**
-   * @returns {{ y: number, h: number}}
-   **/
-  consume_remaining_screen_space() {
-    const y = this.#cursor_y;
-    const h = this.#device_height - this.#cursor_y;
-    this.#cursor_y = this.#device_height;
-    return {y, h};
   }
 }
