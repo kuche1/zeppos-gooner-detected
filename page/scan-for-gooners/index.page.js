@@ -13,8 +13,10 @@ Page({
 
     radar_animation = new AnimationRadar(screen);
 
+    // playing this file locally sound way too loud but it sounds ok
+    // on the "bip max"
     music_player = new MusicPlayer(
-      "scanning.mp3",
+      "scanning.mp3", 
       () => { replace({ url: "page/show-gooners/index.page" }) },
     );
   },
