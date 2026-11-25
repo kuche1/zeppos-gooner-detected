@@ -8,7 +8,7 @@ let radar_animation = null;
 Page({
   build() {
     const screen = new Screen(false);
-    screen.print_text("Scanning for gooners...", 40, 0xffffff);
+    screen.print_text("Scanning for Gooners...", 40, 0xffffff);
 
     radar_animation = new AnimationRadar(screen);
 
