@@ -25,7 +25,7 @@ Page({
     // disable swipes
     setScrollLock({ lock: true });
 
-    music_player = new MusicPlayer("detected.mp3");
+    music_player = new MusicPlayer("detected.mp3", ()=>{});
 
     // TODO: allow for scrolling to the right and show some other pics
   },
