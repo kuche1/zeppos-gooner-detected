@@ -8,7 +8,7 @@ export class Screen {
   #cursor_y;
 
   /**
-   * @param {bool} top_bar_visible
+   * @param {boolean} top_bar_visible
    */
   constructor(top_bar_visible) {
     const { width, height } = getDeviceInfo();

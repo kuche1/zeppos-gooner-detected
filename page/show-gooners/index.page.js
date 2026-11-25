@@ -1,9 +1,9 @@
 import { log as Logger } from "@zos/utils";
 import { setScrollLock } from "@zos/page";
-import { create, id } from "@zos/media";
 import { Screen } from "../../utils/screen.js";
+import { MusicPlayer } from "../../utils/music_player.js";
 
-const logger = Logger.getLogger("helloworld");
+const logger = Logger.getLogger("show-gooners");
 
 let music_player = null;
 
@@ -25,29 +25,13 @@ Page({
     // disable swipes
     setScrollLock({ lock: true });
 
-    music_player = create(id.PLAYER);
-
-    music_player.addEventListener(music_player.event.PREPARE, (ok) => {
-      if (ok) music_player.start();
-      else logger.debug("could not load music");
-    });
-
-    // i dont think this is needed
-    music_player.addEventListener(music_player.event.COMPLETE, () => {
-      music_player.stop();
-    });
-
-    music_player.setSource(music_player.source.FILE, { file: "detected.mp3" });
-    music_player.prepare();
+    music_player = new MusicPlayer("detected.mp3");
 
     // TODO: allow for scrolling to the right and show some other pics
   },
 
   onDestroy() {
     logger.debug("page onDestroy invoked");
-
-    // i dont know if this is actually needed,
-    // i'll keep it just in case
-    if (music_player) music_player.stop();
+    if (music_player) music_player.destroy();
   },
 });
