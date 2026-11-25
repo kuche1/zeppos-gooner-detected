@@ -1,7 +1,7 @@
 // import * as hmUI from "@zos/ui";
 // import { getText } from "@zos/i18n";
 import { getDeviceInfo } from "@zos/device";
-// import { px } from "@zos/utils";
+import { px } from "@zos/utils";
 
 export const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = getDeviceInfo();
 
@@ -18,11 +18,14 @@ export const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = getDeviceInfo();
 //   text_style: hmUI.text_style.WRAP,
 // };
 
+const STATUS_BAR_HEIGHT = px(80);
+// this is not documented, measured by hand on the "bip max"
+
 export const IMG_STYLE = {
   x: 0,
-  y: 0,
+  y: STATUS_BAR_HEIGHT,
   w: DEVICE_WIDTH,
-  h: DEVICE_HEIGHT,
+  h: DEVICE_HEIGHT - STATUS_BAR_HEIGHT,
   src: "image/gooner.png",
   auto_scale: true, // resize the image so that it fits `w` and `h`
 };
