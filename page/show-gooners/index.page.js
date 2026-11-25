@@ -15,7 +15,7 @@ Page({
   build() {
     logger.debug("page build invoked");
 
-    const screen = new Screen();
+    const screen = new Screen(false);
 
     screen.print_text('GOONER DETECTED', 40, 0xff0000);
     screen.print_text('犹太人 tracker 6000', 40, 0xffff00);

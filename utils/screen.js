@@ -3,21 +3,22 @@ import { px } from "@zos/utils";
 import * as hmUI from "@zos/ui";
 
 export class Screen {
-  constructor() {
+  /**
+   * @param {bool} top_bar_visible
+   */
+  constructor(top_bar_visible) {
     const { width, height } = getDeviceInfo();
     this.device_width = width;
     this.device_height = height;
 
     this.cursor_y = 0
 
-    this.top_bar_visibility(false);
-  }
-
-  // TODO: this needs to be an argument to the constructor and the y needs
-  // to be set according to this
-  /** @param {boolean} state */
-  top_bar_visibility(state) {
-    hmUI.setStatusBarVisible(state);
+    hmUI.setStatusBarVisible(top_bar_visible);
+    if (top_bar_visible) {
+        // add the size of the top bar
+        // this value has been eyeballed for the `bip max`
+        this.cursor_y += px(80);
+    }
   }
 
   /**
