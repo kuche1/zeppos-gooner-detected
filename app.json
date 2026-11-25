@@ -30,6 +30,7 @@
         "page": {
           "pages": [
             "page/home/index.page",
+            "page/scan-for-gooners/index.page",
             "page/show-gooners/index.page"
           ]
         }
