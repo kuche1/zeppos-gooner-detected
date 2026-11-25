@@ -1,5 +1,6 @@
 import { create, id } from "@zos/media";
 import { log as Logger } from "@zos/utils";
+import { getDeviceInfo } from "@zos/device";
 
 const logger = Logger.getLogger("music_player");
 
@@ -11,6 +12,21 @@ export class MusicPlayer {
    * @param {() => void} on_complete
    */
   constructor(src, on_complete) {
+    if (!getDeviceInfo().hasSpeaker) {
+      logger.debug("device has no speaker");
+      // the event listener for `this.#player.event.PREPARE` below
+      // will not work
+
+      setTimeout(
+        () => {
+          on_complete();
+        },
+        3000,
+      );
+
+      return;
+    }
+
     logger.debug("creating player");
 
     this.#player = create(id.PLAYER);
@@ -42,8 +58,6 @@ export class MusicPlayer {
     this.#player.setSource(this.#player.source.FILE, { file: src });
 
     this.#player.prepare();
-
-    logger.debug("AAaaAAaa");
   }
 
   destroy() {
