@@ -26,6 +26,9 @@ Page({
     screen.next_horizontal_screen();
     screen.print_text("Exibit B", 40, 0x00ff00);
     screen.print_image('image/proof1.png');
+    screen.next_horizontal_screen();
+    screen.print_text("Exibit C", 40, 0x00ff00);
+    screen.print_image('image/proof2.png');
     screen.finish_screen_setup();
 
     music_player = new MusicPlayer("detected.mp3", ()=>{});
