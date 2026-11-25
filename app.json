@@ -29,7 +29,7 @@
       "module": {
         "page": {
           "pages": [
-            "page/gt/home/index.page"
+            "page/home/index.page"
           ]
         }
       },
