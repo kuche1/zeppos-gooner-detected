@@ -1,21 +1,24 @@
 import { replace } from "@zos/router";
 import { Screen } from "../../utils/screen.js";
+import { AnimationRadar } from "../../utils/ai_animation_radar.js";
 
-let timer = null;
+let scene_timer = null;
+let radar_animation = null;
 
 Page({
   build() {
     const screen = new Screen(false);
     screen.print_text("scanning for gooners...", 40, 0xffffff);
 
-    timer = setTimeout(() => {
+    radar_animation = new AnimationRadar(screen);
+
+    scene_timer = setTimeout(() => {
       replace({ url: "page/show-gooners/index.page" });
     }, 3000);
-
-    // TODO: add a scanning animation
   },
 
   onDestroy() {
-    if (timer !== null) clearTimeout(timer);
+    if (scene_timer !== null) clearTimeout(scene_timer);
+    if (radar_animation !== null) radar_animation.destroy();
   },
 });
