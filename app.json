@@ -29,7 +29,8 @@
       "module": {
         "page": {
           "pages": [
-            "page/home/index.page"
+            "page/home/index.page",
+            "page/show-gooners/index.page"
           ]
         }
       },
