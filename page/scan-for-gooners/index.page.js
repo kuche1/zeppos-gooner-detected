@@ -14,7 +14,7 @@ Page({
     radar_animation = new AnimationRadar(screen);
 
     music_player = new MusicPlayer(
-      "scanning.mp3", // TODO: this is not loud enough
+      "scanning.mp3",
       () => { replace({ url: "page/show-gooners/index.page" }) },
     );
   },
