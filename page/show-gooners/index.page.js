@@ -93,8 +93,6 @@ Page({
 
     const screen = new Screen();
 
-    // hmUI.createWidget(hmUI.widget.TEXT, TEXT_STYLE);
-    // hmUI.createWidget(hmUI.widget.IMG, IMG_STYLE);
     screen.print_text('GOONER DETECTED', 40, 0xff0000);
     screen.print_text('犹太人 tracker 6000', 40, 0xffff00);
     screen.print_text('(feet_licker6000)', 40, 0xffff00);
