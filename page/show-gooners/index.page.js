@@ -12,11 +12,16 @@ Page({
   build() {
     logger.debug("page build invoked");
 
+    // TODO: make the 2nd line yellow, add the other name
+    // TODO: hide the top bar
     hmUI.createWidget(hmUI.widget.TEXT, TEXT_STYLE);
     hmUI.createWidget(hmUI.widget.IMG, IMG_STYLE);
 
     // disable swipes
     setScrollLock({ lock: true });
+
+    // TODO: allow for scrolling to the right and show some other pics
+    // TODO: add cs1.6 music
   },
 
   onDestroy() {
