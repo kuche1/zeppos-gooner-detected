@@ -3,16 +3,18 @@
 import * as hmUI from "@zos/ui";
 import { px } from "@zos/utils";
 
-// spinning radar drawn in the space left below `screen.cursor_y`
+// spinning radar that takes up the remaining screen space
 export class AnimationRadar {
   /**
    * @param {import("./screen.js").Screen} screen
    */
   constructor(screen) {
-    const free_height = screen.device_height - screen.cursor_y;
-    const r = Math.floor(Math.min(screen.device_width, free_height) / 2) - px(20);
-    const cx = Math.floor(screen.device_width / 2);
-    const cy = screen.cursor_y + Math.floor(free_height / 2);
+    const width = screen.device_width;
+    const { y, h } = screen.consume_remaining_screen_space();
+
+    const r = Math.floor(Math.min(width, h) / 2) - px(20);
+    const cx = Math.floor(width / 2);
+    const cy = y + Math.floor(h / 2);
 
     // rings
     for (const ring of [r, (r * 2) / 3, r / 3]) {
@@ -50,8 +52,6 @@ export class AnimationRadar {
         end_angle: angle + 40,
       });
     }, 50);
-
-    screen.cursor_y = screen.device_height;
   }
 
   destroy() {

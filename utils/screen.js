@@ -3,21 +3,25 @@ import { px } from "@zos/utils";
 import * as hmUI from "@zos/ui";
 
 export class Screen {
+  device_width;
+  #device_height;
+  #cursor_y;
+
   /**
    * @param {bool} top_bar_visible
    */
   constructor(top_bar_visible) {
     const { width, height } = getDeviceInfo();
     this.device_width = width;
-    this.device_height = height;
+    this.#device_height = height;
 
-    this.cursor_y = 0
+    this.#cursor_y = 0
 
     hmUI.setStatusBarVisible(top_bar_visible);
     if (top_bar_visible) {
         // add the size of the top bar
         // this value has been eyeballed for the `bip max`
-        this.cursor_y += px(80);
+        this.#cursor_y += px(80);
     }
   }
 
@@ -44,7 +48,7 @@ export class Screen {
       {
         text: text,
         x: 0,
-        y: this.cursor_y,
+        y: this.#cursor_y,
         w: width,
         h: height,
         color: color,
@@ -54,7 +58,7 @@ export class Screen {
       },
     );
 
-    this.cursor_y += height;
+    this.#cursor_y += height;
   }
 
   // the printed image takes up the rest of the screen
@@ -62,20 +66,28 @@ export class Screen {
    * @param {string} src
    */
   print_image(src) {
-    const height = this.device_height - this.cursor_y;
+    const {y, h} = this.consume_remaining_screen_space();
 
     hmUI.createWidget(
       hmUI.widget.IMG,
       {
         x: 0,
-        y: this.cursor_y,
+        y: y,
         w: this.device_width,
-        h: height,
+        h: h,
         src: src,
         auto_scale: true, // resize the image so that it fits `w` and `h`
       },
     );
+  }
 
-    this.cursor_y = this.device_height;
+  /**
+   * @returns {{ y: number, h: number}}
+   **/
+  consume_remaining_screen_space() {
+    const y = this.#cursor_y;
+    const h = this.#device_height - this.#cursor_y;
+    this.#cursor_y = this.#device_height;
+    return {y, h};
   }
 }
