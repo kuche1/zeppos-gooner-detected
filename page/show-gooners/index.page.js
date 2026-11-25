@@ -21,7 +21,11 @@ Page({
     screen.print_text('(feet_licker6000)', 40, 0xffff00);
     screen.print_image("image/gooner.png");
     screen.next_horizontal_screen();
-    screen.print_text('asddfgh', 40, 0xffffff); // TODO: put the proof here
+    screen.print_text("Exibit A", 40, 0x00ff00);
+    screen.print_image('image/proof0.png');
+    screen.next_horizontal_screen();
+    screen.print_text("Exibit B", 40, 0x00ff00);
+    screen.print_image('image/proof1.png');
     screen.finish_screen_setup();
 
     music_player = new MusicPlayer("detected.mp3", ()=>{});
