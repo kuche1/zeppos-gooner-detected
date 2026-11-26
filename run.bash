@@ -6,9 +6,8 @@ set -euo pipefail
 
 #########################################
 
-# TODO: del *.js
 # delete old js
-rm utils/ai_animation_radar.js utils/device_info.js utils/music_player.js utils/screen.js || true
+rm utils/*.js || true
 
 #########################################
 
