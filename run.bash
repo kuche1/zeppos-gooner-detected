@@ -3,6 +3,7 @@
 set -euo pipefail
 
 # TODO: and cwd ?
+# TODO: convert `page/` to ts
 
 #########################################
 
@@ -33,3 +34,4 @@ npx eslint utils
 
 # run on simulator
 zeus dev --target 'Amazfit Bip Max'
+# TODO: kill after like 1sec or something
