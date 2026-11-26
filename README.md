@@ -1,7 +1,5 @@
 # zeppos-gooner-detected
 
-TODO: use typescript instead of javascript
-
 TODO: modify the values in `tsconfig.json`
 
 TODO: update all files to be typescript

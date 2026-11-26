@@ -1,1 +1,1 @@
-{ "compilerOptions": { "strict": true, "noEmit": true, "skipLibCheck": true } }
+{ "compilerOptions": { "strict": true, "skipLibCheck": true } }

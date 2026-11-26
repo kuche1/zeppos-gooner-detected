@@ -6,7 +6,13 @@ set -euo pipefail
 
 #########################################
 
-# check types
+# TODO: del *.js
+# delete old js
+rm utils/ai_animation_radar.js utils/device_info.js utils/music_player.js utils/screen.js || true
+
+#########################################
+
+# check types, generate .js
 tsc
 
 #########################################
@@ -20,13 +26,9 @@ npx eslint utils
 
 #########################################
 
-# delete old js
-rm utils/ai_animation_radar.js utils/device_info.js utils/music_player.js utils/screen.js || true
-
-#########################################
-
+### we are now using `tsc` with `"noEmit": false` for this
 # add new js
-esbuild utils/ai_animation_radar.ts utils/device_info.ts utils/music_player.ts utils/screen.ts --outdir=utils
+# esbuild utils/ai_animation_radar.ts utils/device_info.ts utils/music_player.ts utils/screen.ts --outdir=utils
 
 #########################################
 
