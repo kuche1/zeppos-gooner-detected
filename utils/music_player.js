@@ -35,9 +35,10 @@ export class MusicPlayer {
     }
 
     this.#player = create(id.PLAYER);
+    // `this.#player.getDuration()` returns 0 in the simulator
 
-    // TODO: it is questionable that we make it play right away
-    // or is it?
+    // In the future we might want to add `.play` instead of automatically
+    // starting playback during the construction
     this.#player.addEventListener(
       this.#player.event.PREPARE,
       (ok) => {
