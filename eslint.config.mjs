@@ -2,7 +2,6 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config({
   files: ["**/*.ts"],
-  extends: [tseslint.configs.base],
+  extends: [tseslint.configs.strictTypeChecked],
   languageOptions: { parserOptions: { projectService: true } },
-  rules: { "@typescript-eslint/no-unnecessary-condition": "error" },
 });

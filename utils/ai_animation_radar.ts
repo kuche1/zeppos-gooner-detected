@@ -44,9 +44,7 @@ export class AnimationRadar {
     let angle = 0;
     this.#timer = setInterval(() => {
       angle = (angle + 10) % 360;
-      // `@zeppos/device-types` only allows primitives here, but `prop.MORE`
-      // takes an object at runtime (even their own docs do this)
-      // @ts-expect-error
+      // @ts-expect-error -- device-types only allows primitives, but prop.MORE takes an object at runtime
       sweep.setProperty(hmUI.prop.MORE, {
         ...sweep_style,
         start_angle: angle,
