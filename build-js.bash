@@ -4,5 +4,5 @@ set -euo pipefail
 
 # TODO: and cwd ?
 
-rm utils/device_info.js || true
-esbuild utils/device_info.ts --outdir=utils
+rm utils/ai_animation_radar.js utils/device_info.js || true
+esbuild utils/ai_animation_radar.ts utils/device_info.ts --outdir=utils
