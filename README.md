@@ -6,4 +6,4 @@
 
 ## Upload to Watch
 
-`zeus preview`
+`zeus preview --target 'Amazfit Bip Max'`
