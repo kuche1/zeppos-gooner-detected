@@ -35,6 +35,14 @@ npx eslint utils
 
 #########################################
 
-# run on simulator
-zeus dev --target 'Amazfit Bip Max'
-# TODO: kill after like 1sec or something
+zeus build
+# this will automatically delete the old package from dist/
+
+zeus install --path . --target 'Amazfit Bip Max'
+
+# this does not display the images properly on the simulator
+# zeus install --path dist/*.zab --target 'Amazfit Bip Max'
+
+### we don't want to keep on watching for any new changes in the project
+# # run on simulator
+# zeus dev --target 'Amazfit Bip Max'
