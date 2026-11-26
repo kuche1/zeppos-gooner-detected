@@ -1,7 +1,6 @@
 import { create, id } from "@zos/media";
 import { log as Logger } from "@zos/utils";
-import { getDeviceInfo } from "@zos/device";
-import { running_in_simulator } from "./running_in_simulator";
+import { DeviceInfo } from "./device_info";
 
 const logger = Logger.getLogger("music_player");
 
@@ -13,13 +12,15 @@ export class MusicPlayer {
    * @param {() => void} on_complete
    */
   constructor(src, on_complete) {
-    if (!getDeviceInfo().hasSpeaker) {
+    const device_info = new DeviceInfo();
+
+    if (!device_info.has_speaker()) {
       logger.debug("device has no speaker");
       // the event listener for `this.#player.event.PREPARE` below
       // will not work
 
       let timeout_ms = 3000;
-      if (running_in_simulator()) {
+      if (device_info.running_on_simulator()) {
         timeout_ms = 0;
       }
 
