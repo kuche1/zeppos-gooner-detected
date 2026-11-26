@@ -1,6 +1,7 @@
 import { create, id } from "@zos/media";
 import { log as Logger } from "@zos/utils";
 import { getDeviceInfo } from "@zos/device";
+import { running_in_simulator } from "./running_in_simulator";
 
 const logger = Logger.getLogger("music_player");
 
@@ -17,11 +18,16 @@ export class MusicPlayer {
       // the event listener for `this.#player.event.PREPARE` below
       // will not work
 
+      let timeout_ms = 3000;
+      if (running_in_simulator()) {
+        timeout_ms = 0;
+      }
+
       setTimeout(
         () => {
           on_complete();
         },
-        3000,
+        timeout_ms,
       );
 
       return;
