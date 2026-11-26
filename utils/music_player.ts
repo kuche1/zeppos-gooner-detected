@@ -64,8 +64,6 @@ export class MusicPlayer {
   destroy() {
     // i dont know if this is actually needed,
     // i'll keep it just in case
-    this.#player?.stop(); // TODO: why not typescript error here?
-    // the `?` is here since we might have not initialised the player if running
-    // in the simulator
+    this.#player.stop();
   }
 }

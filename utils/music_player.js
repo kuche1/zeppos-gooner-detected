@@ -44,6 +44,6 @@ export class MusicPlayer {
     this.#player.prepare();
   }
   destroy() {
-    this.#player?.stop();
+    this.#player.stop();
   }
 }
