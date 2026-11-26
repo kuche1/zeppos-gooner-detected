@@ -1,3 +1,4 @@
+"use strict";
 import { create, id } from "@zos/media";
 import { log as Logger } from "@zos/utils";
 import { DeviceInfo } from "./device_info";

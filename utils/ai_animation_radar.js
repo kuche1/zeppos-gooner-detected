@@ -1,3 +1,4 @@
+"use strict";
 import * as hmUI from "@zos/ui";
 import { px } from "@zos/utils";
 export class AnimationRadar {

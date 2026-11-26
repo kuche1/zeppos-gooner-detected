@@ -1,3 +1,4 @@
+"use strict";
 import { getDeviceInfo } from "@zos/device";
 export class DeviceInfo {
   #device_info;
