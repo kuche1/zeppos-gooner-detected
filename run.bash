@@ -21,14 +21,14 @@ npx eslint utils
 #########################################
 
 # delete old js
-rm utils/ai_animation_radar.js utils/device_info.js utils/music_player.js || true
+rm utils/ai_animation_radar.js utils/device_info.js utils/music_player.js utils/screen.js || true
 
 #########################################
 
 # add new js
-esbuild utils/ai_animation_radar.ts utils/device_info.ts utils/music_player.ts --outdir=utils
+esbuild utils/ai_animation_radar.ts utils/device_info.ts utils/music_player.ts utils/screen.ts --outdir=utils
 
 #########################################
 
 # run on simulator
-zeus dev
+zeus dev --target 'Amazfit Bip Max'
