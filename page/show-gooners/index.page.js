@@ -45,6 +45,6 @@ Page({
 
   onDestroy() {
     logger.debug("page onDestroy invoked");
-    if (music_player) music_player.destroy();
+    music_player?.destroy();
   },
 });

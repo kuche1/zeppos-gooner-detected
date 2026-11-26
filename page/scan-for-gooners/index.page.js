@@ -22,7 +22,7 @@ Page({
   },
 
   onDestroy() {
-    if (radar_animation !== null) radar_animation.destroy();
-    if (music_player) music_player.destroy();
+    radar_animation?.destroy();
+    music_player?.destroy();
   },
 });
