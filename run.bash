@@ -3,12 +3,11 @@
 set -euo pipefail
 
 # TODO: and cwd ?
-# TODO: convert `page/` to ts
 
 #########################################
 
 # delete old js
-rm utils/*.js || true
+find page/ utils/ -name '*.js' -delete
 
 #########################################
 
@@ -19,6 +18,7 @@ tsc
 
 # dependency:
 # npm i -D eslint typescript-eslint typescript
+## actually, i think this is for the .lock (as to speak) file
 
 # linter
 npx eslint utils
